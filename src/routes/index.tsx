@@ -1,24 +1,65 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import { useEffect, useRef, useState } from 'react';
+import { Brain, HeartPulse, Baby, UsersRound, Video, MapPin, ReceiptText, Menu, X, Plus, Instagram } from 'lucide-react';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { Button } from '@/components/ui/button';
+import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
+import { faqs, professionalRegistration, specialties, whatsappUrl } from '@/lib/nair-content';
+import portrait from '@/assets/nair-portrait.png';
+import office from '@/assets/nair-consultorio.jpg.asset.json';
+import arch from '@/assets/nair-retrato.jpg.asset.json';
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
+const title = 'Psicóloga em Brasília | Nair Guimarães – TCC Online e Presencial';
+const description = 'Psicóloga clínica em Brasília especializada em Terapia Cognitivo-Comportamental. Atendimento online e presencial para crianças, adolescentes, adultos e idosos.';
+export const Route = createFileRoute('/')({
+  head: () => ({ meta: [{ title }, { name: 'description', content: description }, { property: 'og:title', content: title }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }),
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const navigation = [['Início', 'inicio'], ['Sobre mim', 'sobre'], ['Especialidades', 'especialidades'], ['Como funciona', 'como-funciona'], ['FAQ', 'faq']];
+const specialtyIcons = [Brain, HeartPulse, Baby, UsersRound];
+const services = [
+  { icon: Video, title: 'Atendimento online', text: 'Sessões por videochamada, com sigilo e conforto, de onde você estiver.' },
+  { icon: MapPin, title: 'Presencial em Brasília', text: 'Atendimento presencial mediante agendamento.' },
+  { icon: ReceiptText, title: 'Recibo para reembolso', text: 'Emitimos recibo para você solicitar o reembolso ao seu plano de saúde.' },
+];
+function WhatsAppIcon({ className = '' }: { className?: string }) {
+  return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.5-4.7A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M8 7.5c.4-.4 1 .1 1.4 1s.2 1.2-.3 1.6c.7 1.5 1.8 2.6 3.4 3.3.4-.6.8-1 1.4-.7l1.6.8c.7.4.1 1.8-.6 2-2.4.8-7.7-3.5-7.9-6.2-.1-.8.4-1.4 1-1.8Z"/></svg>;
+}
+function Appointment({ compact = false }: { compact?: boolean }) {
+  return <Button asChild className={`appointment ${compact ? 'appointment-small' : ''}`}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">{!compact && <WhatsAppIcon className="whatsapp-icon"/>}{compact ? 'Agendar' : 'Agendar pelo WhatsApp'}</a></Button>;
+}
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    }), { threshold: 0.08 });
+    mainRef.current?.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+  return <>
+    <header className="site-header">
+      <div className="page-width header-inner">
+        <a href="#inicio" className="brand" onClick={() => setMenuOpen(false)}><span className="brand-psi">Ψ</span><span>Nair Guimarães | Psicóloga</span></a>
+        <nav className="desktop-nav" aria-label="Menu principal">{navigation.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}<Appointment compact/></nav>
+        <Button className="menu-toggle" size="icon" aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</Button>
+      </div>
+      {menuOpen && <nav id="mobile-menu" className="mobile-nav" aria-label="Menu no celular">{navigation.map(([label, id]) => <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>)}<Appointment compact/></nav>}
+    </header>
+    <main ref={mainRef}>
+      <section id="inicio" className="hero">
+        <div className="page-width hero-inner">
+          <div className="hero-copy"><h1>Psicóloga<br/>Nair Guimarães</h1><p>Terapia Cognitivo-Comportamental online<br className="desktop-break"/> e presencial em Brasília.</p><div className="hero-actions"><Appointment/><span className="hero-psi" aria-hidden="true">Ψ</span></div></div>
+          <div className="hero-photo"><img className="desktop-portrait" src={portrait} alt="Psicóloga Nair Guimarães, de óculos e blazer branco" fetchPriority="high"/><div className="portrait-arch"><img src={arch.url} alt="Nair Guimarães em seu consultório" fetchPriority="high"/></div></div>
+        </div>
+      </section>
+      <section id="especialidades" className="specialties section-offwhite"><div className="page-width reveal"><h2>Como posso te ajudar</h2><p className="mobile-subtitle">Áreas de atuação e principais demandas</p><div className="specialty-grid">{specialties.map((item, i) => { const Icon = specialtyIcons[i]; return <article className="specialty-card" key={item.title}>{Icon && <Icon strokeWidth={1.15}/>}<div><h3>{item.title}</h3><p>{item.description}</p></div></article>; })}</div></div></section>
+      <section id="sobre" className="about section-cream"><div className="page-width about-inner reveal"><h2 className="mobile-about-title">Sobre mim</h2><img className="about-photo" src={office.url} alt="Retrato da psicóloga Nair Guimarães no consultório" loading="lazy"/><div className="about-copy"><h2>Sobre mim</h2><h3>Olá, sou a Nair Guimarães</h3><p>Sou psicóloga clínica e acredito que cada pessoa merece um espaço seguro para ser ouvida com empatia e respeito. Minha prática é guiada pela Terapia Cognitivo-Comportamental, uma abordagem com base científica que ajuda a compreender pensamentos, emoções e comportamentos. Sou graduada em Psicologia pela Faculdade Anhanguera, especialista em TCC pelo IPOG e em Análise do Comportamento e ABA pela FAPSI, e estou em formação em Neuropsicologia e ABA pela PUC-GO.</p><div className="credentials"><span>Especialista em TCC</span><span>Análise do Comportamento e ABA</span></div></div></div></section>
+      <section id="como-funciona" className="how-it-works"><div className="page-width reveal"><h2>Como funciona</h2><div className="service-grid">{services.map(({ icon: Icon, title, text }) => <article className="service" key={title}><Icon strokeWidth={1.2}/><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div></section>
+      <section id="faq" className="faq section-offwhite"><div className="page-width reveal"><h2>Dúvidas frequentes</h2><Accordion type="single" collapsible className="faq-list">{faqs.map((item, i) => <AccordionItem value={`faq-${i}`} key={item.question} className="faq-item"><AccordionPrimitive.Header><AccordionPrimitive.Trigger className="faq-trigger">{item.question}<Plus strokeWidth={1.5}/></AccordionPrimitive.Trigger></AccordionPrimitive.Header><AccordionContent className="faq-answer">{item.answer}</AccordionContent></AccordionItem>)}</Accordion></div></section>
+      <section className="final-call"><div className="page-width reveal"><h2>Dê o primeiro passo para cuidar de você</h2><p>Buscar ajuda é um ato de coragem e de cuidado consigo mesmo.</p><Appointment/></div></section>
+    </main>
+    <footer className="site-footer"><div className="page-width"><a className="footer-brand" href="#inicio"><span aria-hidden="true">Ψ </span>Nair Guimarães | Psicóloga</a><p className="registration">{professionalRegistration}</p><div className="social-links"><span className="social-placeholder" aria-label="Instagram — perfil a informar" title="Perfil do Instagram a informar"><Instagram strokeWidth={1.5}/></span><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><WhatsAppIcon/></a></div><p className="crisis-notice">Este site não oferece atendimento de urgência.<br className="mobile-only"/> Em situação de crise, ligue para o CVV no <a href="tel:188">188</a>.</p><p className="copyright">© 2026 Nair Guimarães. Todos os direitos reservados.</p></div></footer>
+  </>;
 }
