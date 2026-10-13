@@ -1,4 +1,6 @@
 export const minimumChildAge = 7;
+export const siteUrl = 'https://psicologaonlinepresencial.com.br';
+export const ogImageUrl = `${siteUrl}/og-image.jpg`;
 export const whatsappNumber = '5561995169116';
 export const professionalRegistration = 'CRP 01/25080';
 export const instagramUrl = 'https://www.instagram.com/psicologanaircguimaraes';
@@ -12,7 +14,11 @@ export const psychologistSchema = {
   '@context': 'https://schema.org',
   '@type': 'Psychologist',
   name: 'Nair Guimarães – Psicóloga',
+  url: siteUrl,
+  image: ogImageUrl,
+  telephone: `+${whatsappNumber}`,
   address: { '@type': 'PostalAddress', addressLocality: 'Brasília – DF' },
+  areaServed: 'Brasília – DF',
   sameAs: [instagramUrl],
   openingHoursSpecification: openingHours.map(({ days, opens, closes }) => ({
     '@type': 'OpeningHoursSpecification', dayOfWeek: days.map(day => `https://schema.org/${day}`), opens, closes,

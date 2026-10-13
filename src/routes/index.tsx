@@ -4,7 +4,7 @@ import { Brain, HeartPulse, Baby, UsersRound, Video, MapPin, ReceiptText, Menu, 
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/accordion';
-import { faqs, inPersonDescription, instagramUrl, openingHours, professionalRegistration, psychologistSchema, specialties, whatsappUrl } from '@/lib/nair-content';
+import { faqs, inPersonDescription, instagramUrl, ogImageUrl, openingHours, professionalRegistration, psychologistSchema, siteUrl, specialties, whatsappUrl } from '@/lib/nair-content';
 import portrait from '@/assets/nair-novo-recorte.png';
 import aboutPhoto from '@/assets/nair-novo-sobre.jpg.asset.json';
 import arch from '@/assets/nair-novo-retrato.png.asset.json';
@@ -12,7 +12,25 @@ import arch from '@/assets/nair-novo-retrato.png.asset.json';
 const title = 'Psicóloga em Brasília | Nair Guimarães – TCC Online e Presencial';
 const description = 'Psicóloga clínica em Brasília especializada em Terapia Cognitivo-Comportamental. Atendimento online e presencial para crianças, adolescentes, adultos e idosos.';
 export const Route = createFileRoute('/')({
-  head: () => ({ meta: [{ title }, { name: 'description', content: description }, { property: 'og:title', content: title }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }], scripts: [{ type: 'application/ld+json', children: JSON.stringify(psychologistSchema) }] }),
+  head: () => ({
+    meta: [
+      { title },
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: siteUrl },
+      { property: 'og:site_name', content: 'Nair Guimarães – Psicóloga' },
+      { property: 'og:locale', content: 'pt_BR' },
+      { property: 'og:image', content: ogImageUrl },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: ogImageUrl },
+    ],
+    links: [{ rel: 'canonical', href: siteUrl }],
+    scripts: [{ type: 'application/ld+json', children: JSON.stringify(psychologistSchema) }],
+  }),
   component: Index,
 });
 const navigation = [['Início', 'inicio'], ['Sobre mim', 'sobre'], ['Especialidades', 'especialidades'], ['Como funciona', 'como-funciona'], ['FAQ', 'faq']];
