@@ -26,16 +26,16 @@
   --radius-lg: 1rem;
 }
 :root {
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.283 0.034 259);
-  --secondary: oklch(0.953 0.014 77);
-  --primary: oklch(0.69 0.089 82);
+  --background: oklch(0.979553 0.005714 84.566055);
+  --foreground: oklch(0.282405 0.033403 257.672459);
+  --secondary: oklch(0.954327 0.013615 78.262527);
+  --primary: oklch(0.693202 0.088602 81.785975);
   --primary-foreground: oklch(1 0 0);
   --card: oklch(1 0 0);
   --border: var(--primary);
   --muted-foreground: oklch(0.4 0.026 259);
-  --band: oklch(0.606 0.063 258);
-  --footer: oklch(0.331 0.049 260);
+  --band: oklch(0.607630 0.062238 257.459124);
+  --footer: oklch(0.330976 0.049373 259.085866);
   --on-band: oklch(1 0 0);
   --shadow-card: 0 5px 9px oklch(0.25 0.02 80 / 13%);
   --shadow-button: 0 3px 5px oklch(0.25 0.02 80 / 15%);
@@ -54,8 +54,8 @@ h2 { font-size: 40px; line-height: 1.2; }
 .brand { font-size: 23px; white-space: nowrap; }
 .brand-psi, .menu-toggle { display: none; }
 .desktop-nav { display: flex; align-items: center; gap: 25px; font-size: 13px; }
-.desktop-nav > a { padding: 8px 0; border-bottom: 1px solid transparent; }
-.desktop-nav > a:hover { border-color: var(--primary); }
+.desktop-nav > a:not(.appointment) { padding: 8px 0; border-bottom: 1px solid transparent; }
+.desktop-nav > a:not(.appointment):hover { border-color: var(--primary); }
 .appointment { height: 46px; padding: 0 25px; border-radius: 999px; font-weight: 400; font-size: 15px; box-shadow: var(--shadow-button); color: var(--primary-foreground); }
 .appointment-small { height: 39px; padding: 0 23px; font-size: 13px; }
 .appointment .whatsapp-icon { display: none; width: 22px; height: 22px; }

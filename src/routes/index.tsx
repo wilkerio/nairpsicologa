@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem } from '@/components/ui/acco
 import { faqs, professionalRegistration, specialties, whatsappUrl } from '@/lib/nair-content';
 import portrait from '@/assets/nair-portrait.png';
 import office from '@/assets/nair-consultorio.jpg.asset.json';
+import arch from '@/assets/nair-retrato.jpg.asset.json';
 
 const title = 'Psicóloga em Brasília | Nair Guimarães – TCC Online e Presencial';
 const description = 'Psicóloga clínica em Brasília especializada em Terapia Cognitivo-Comportamental. Atendimento online e presencial para crianças, adolescentes, adultos e idosos.';
@@ -50,7 +51,7 @@ function Index() {
       <section id="inicio" className="hero">
         <div className="page-width hero-inner">
           <div className="hero-copy"><h1>Psicóloga<br/>Nair Guimarães</h1><p>Terapia Cognitivo-Comportamental online<br className="desktop-break"/> e presencial em Brasília.</p><div className="hero-actions"><Appointment/><span className="hero-psi" aria-hidden="true">Ψ</span></div></div>
-          <div className="hero-photo"><img className="desktop-portrait" src={portrait} alt="Psicóloga Nair Guimarães, de óculos e blazer branco" fetchPriority="high"/><div className="portrait-arch"><img src={office.url} alt="Nair Guimarães em seu consultório" fetchPriority="high"/></div></div>
+          <div className="hero-photo"><img className="desktop-portrait" src={portrait} alt="Psicóloga Nair Guimarães, de óculos e blazer branco" fetchPriority="high"/><div className="portrait-arch"><img src={arch.url} alt="Nair Guimarães em seu consultório" fetchPriority="high"/></div></div>
         </div>
       </section>
       <section id="especialidades" className="specialties section-offwhite"><div className="page-width reveal"><h2>Como posso te ajudar</h2><p className="mobile-subtitle">Áreas de atuação e principais demandas</p><div className="specialty-grid">{specialties.map((item, i) => { const Icon = specialtyIcons[i]; return <article className="specialty-card" key={item.title}>{Icon && <Icon strokeWidth={1.15}/>}<div><h3>{item.title}</h3><p>{item.description}</p></div></article>; })}</div></div></section>
