@@ -1,6 +1,23 @@
 export const minimumChildAge = 7;
-export const whatsappNumber = '55XXXXXXXXXXX';
-export const professionalRegistration = 'CRP 01/XXXXX';
+export const whatsappNumber = '5561995169116';
+export const professionalRegistration = 'CRP 01/25080';
+export const instagramUrl = 'https://www.instagram.com/psicologanaircguimaraes';
+export const openingHours = [
+  { label: 'Segunda a sexta', days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '20:00' },
+  { label: 'Sábado', days: ['Saturday'], opens: '09:00', closes: '17:00' },
+  { label: 'Domingo', days: ['Sunday'], opens: '00:00', closes: '00:00', closed: true },
+];
+export const inPersonDescription = 'Atendimento presencial mediante agendamento.';
+export const psychologistSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Psychologist',
+  name: 'Nair Guimarães – Psicóloga',
+  address: { '@type': 'PostalAddress', addressLocality: 'Brasília – DF' },
+  sameAs: [instagramUrl],
+  openingHoursSpecification: openingHours.map(({ days, opens, closes }) => ({
+    '@type': 'OpeningHoursSpecification', dayOfWeek: days.map(day => `https://schema.org/${day}`), opens, closes,
+  })),
+};
 export const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá, Nair! Vim pelo site e gostaria de agendar uma consulta.')}`;
 export const specialties = [
   { title: 'Ansiedade', description: 'Estratégias da TCC para lidar com preocupação, tensão e pensamentos acelerados.' },
