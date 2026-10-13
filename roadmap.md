@@ -5,3 +5,4 @@
 - [x] Update hero portrait, registration and social/appointment links.
 - [x] Add approved hours and Psychologist structured data without street address.
 - [x] Verify final updates on desktop and mobile.
+- [x] Use the latest portrait in the "Sobre mim" card and verify desktop and mobile.
