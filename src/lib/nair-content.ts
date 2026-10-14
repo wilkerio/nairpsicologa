@@ -1,5 +1,5 @@
 export const minimumChildAge = 7;
-export const siteUrl = 'https://psicologaonlinepresencial.com.br';
+export const siteUrl = 'https://psicologaonlineepresencial.com.br';
 export const ogImageUrl = `${siteUrl}/og-image.jpg`;
 export const whatsappNumber = '5561995169116';
 export const professionalRegistration = 'CRP 01/25080';
