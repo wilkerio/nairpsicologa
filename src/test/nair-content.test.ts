@@ -28,3 +28,18 @@ describe('approved practice rules', () => {
     expect(faqs.find(item => item.question === 'Onde é o atendimento presencial?')?.answer).toBe('Em Brasília. O local é informado no momento do agendamento.');
   });
 });
+import { googleRating, googleReviewsUrl, reviews } from '../lib/nair-content';
+
+describe('google reviews', () => {
+  it('links to the Google reviews of the approved profile', () => {
+    const url = new URL(googleReviewsUrl);
+    expect(url.hostname).toBe('www.google.com');
+    expect(url.searchParams.get('kgmid')).toBe('/g/11n43dnjsz');
+    expect(url.hash).toContain('lrd=0x935a294c141d6e43:0xa22f32d7ee34a5ff,1');
+  });
+  it('shows the Google rating', () => expect(googleRating).toEqual({ score: '5,0', count: 37 }));
+  it('abbreviates every reviewer surname', () => {
+    expect(reviews.length).toBeGreaterThan(0);
+    for (const { author } of reviews) expect(author).toMatch(/^\S+ \S\.$/);
+  });
+});

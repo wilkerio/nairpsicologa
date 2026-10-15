@@ -38,3 +38,14 @@ export const faqs = [
   { question: 'Onde é o atendimento presencial?', answer: 'Em Brasília. O local é informado no momento do agendamento.' },
   { question: 'Como agendar uma consulta?', answer: 'É só clicar no botão de WhatsApp e me enviar uma mensagem para combinarmos o melhor horário.' },
 ];
+export const googleRating = { score: '5,0', count: 37 };
+export const googleReviewsUrl = 'https://www.google.com/search?kgmid=/g/11n43dnjsz&hl=pt-BR&q=Psic%C3%B3loga+Online+e+Presencial%2FBras%C3%ADlia-+NairGuimaraes-Terapia+Cognitivo+comportamental#lrd=0x935a294c141d6e43:0xa22f32d7ee34a5ff,1,,,,';
+// Trechos literais de avaliações públicas no Google; sobrenome abreviado para preservar os pacientes.
+export const reviews = [
+  { author: 'Rafaela S.', text: 'Faço acompanhamento com ela e só tenho elogios. É uma psicóloga extremamente acolhedora, atenta e sensível, que realmente escuta sem julgamentos. Desde o início, me senti confortável e segura nas sessões, o que fez toda a diferença no meu processo.' },
+  { author: 'Lívia C.', text: 'Profissional impecável. Demonstra um olhar muito humano e cuidadoso. Sinto muita segurança no trabalho dela pela atenção e pelo carinho com que conduz o atendimento. Recomendo de olhos fechados!' },
+  { author: 'Terezinha M.', text: 'Excelente profissional, muito atencioso e empático. Consegue ouvir sem julgamentos e conduz as sessões de forma acolhedora e respeitosa. Demonstra conhecimento, sensibilidade e compromisso com o bem-estar dos pacientes.' },
+  { author: 'Carmena P.', text: 'Profissional excelente, sempre disponível e preocupada com seus pacientes. Me ajudou muito em uma fase muito difícil em minha vida.' },
+  { author: 'Cintia G.', text: 'Uma profissional incrível, humana e acolhedora. Sua escuta atenta e sensibilidade fazem toda a diferença no processo terapêutico.' },
+  { author: 'Mila A.', text: 'Ótima psicóloga, gosto dela. Está me ajudando a me entender melhor.' },
+];
