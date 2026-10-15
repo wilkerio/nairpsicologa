@@ -14,6 +14,7 @@ export const psychologistSchema = {
   '@context': 'https://schema.org',
   '@type': 'Psychologist',
   name: 'Nair Guimarães – Psicóloga',
+  description: 'Psicóloga em Brasília especializada em terapia cognitivo-comportamental (TCC), com atendimento online e presencial.',
   url: siteUrl,
   image: ogImageUrl,
   telephone: `+${whatsappNumber}`,

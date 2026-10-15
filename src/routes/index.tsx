@@ -8,8 +8,8 @@ import { faqs, googleRating, googleReviewsUrl, inPersonDescription, instagramUrl
 import portrait from '@/assets/nair-novo-recorte.png';
 import aboutPhoto from '@/assets/nair-sobre.jpg';
 
-const title = 'Psicóloga em Brasília | Nair Guimarães – TCC Online e Presencial';
-const description = 'Psicóloga clínica em Brasília especializada em Terapia Cognitivo-Comportamental. Atendimento online e presencial para crianças, adolescentes, adultos e idosos.';
+const title = 'Psicóloga TCC em Brasília | Online e Presencial | Nair Guimarães';
+const description = 'Psicóloga e psicólogo em Brasília com terapia cognitivo-comportamental (TCC) online e presencial. Ansiedade, depressão, crianças, adolescentes e adultos.';
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
