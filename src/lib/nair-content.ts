@@ -32,12 +32,17 @@ export const specialties = [
   { title: 'Crianças e adolescentes', description: `Atendimento a partir de ${minimumChildAge} anos, adaptado a cada fase do desenvolvimento.` },
   { title: 'Adultos e idosos', description: 'Apoio para desafios emocionais e mudanças em qualquer fase da vida.' },
 ];
+// Valores do pacote de 5 sessões conforme oferta publicada no Google Meu Negócio (válida até 31/12/2026).
+export const packageSessions = 5;
+export const packagePrices = { online: '560', presencial: '900' };
 export const faqs = [
   { question: 'Atende plano de saúde?', answer: 'O atendimento é particular, mas emito recibo para que você possa solicitar o reembolso ao seu plano, de acordo com as regras do seu contrato.' },
   { question: 'Como funciona a terapia online?', answer: 'As sessões acontecem por videochamada, com o mesmo sigilo e cuidado do atendimento presencial. Você só precisa de um local reservado e de uma boa conexão.' },
   { question: 'Atende crianças?', answer: `Sim, atendo crianças a partir de ${minimumChildAge} anos, além de adolescentes, adultos e idosos.` },
   { question: 'Onde é o atendimento presencial?', answer: 'Em Brasília. O local é informado no momento do agendamento.' },
   { question: 'Como agendar uma consulta?', answer: 'É só clicar no botão de WhatsApp e me enviar uma mensagem para combinarmos o melhor horário.' },
+  { question: 'O que a terapia cognitivo-comportamental trata?', answer: 'A TCC é indicada para ansiedade, depressão, estresse, medos, dificuldades nas relações e outras questões emocionais e de comportamento. Ela ajuda a identificar como pensamentos, emoções e atitudes influenciam o dia a dia, e a construir formas mais saudáveis de lidar com eles.' },
+  { question: 'Quanto custa a terapia cognitivo-comportamental?', answer: `Pacote de ${packageSessions} sessões: R$ ${packagePrices.online} online ou R$ ${packagePrices.presencial} presencial. Os valores são confirmados no agendamento.` },
 ];
 export const googleRating = { score: '5,0', count: 37 };
 export const googleReviewsUrl = 'https://www.google.com/search?kgmid=/g/11n43dnjsz&hl=pt-BR&q=Psic%C3%B3loga+Online+e+Presencial%2FBras%C3%ADlia-+NairGuimaraes-Terapia+Cognitivo+comportamental#lrd=0x935a294c141d6e43:0xa22f32d7ee34a5ff,1,,,,';

@@ -43,3 +43,18 @@ describe('google reviews', () => {
     for (const { author } of reviews) expect(author).toMatch(/^\S+ \S\.$/);
   });
 });
+
+import { faqs as allFaqs } from '../lib/nair-content';
+
+describe('faq search questions', () => {
+  it('answers what TCC treats without promising results', () => {
+    const item = allFaqs.find(f => f.question === 'O que a terapia cognitivo-comportamental trata?');
+    expect(item?.answer).toContain('ansiedade');
+    expect(item?.answer).not.toMatch(/cura|garant/i);
+  });
+  it('states the approved package prices', () => {
+    const item = allFaqs.find(f => f.question === 'Quanto custa a terapia cognitivo-comportamental?');
+    expect(item?.answer).toContain('R$ 560');
+    expect(item?.answer).toContain('R$ 900');
+  });
+});
